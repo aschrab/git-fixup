@@ -70,7 +70,11 @@ function print_candidates() {
 
 function fallback_menu() {
     (
-        readarray -t options
+        options=()
+        while read line
+        do
+            options+=("$line")
+        done
         IFS=$'\n'
         PS3="Which commit should I $op? "
         select line in "${options[@]}"; do
